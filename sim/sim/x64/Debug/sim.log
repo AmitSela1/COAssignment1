@@ -1,0 +1,10 @@
+﻿  main.c
+C:\Users\omric\Desktop\final\sim\main.c(131,21): warning C4477: 'fprintf' : format string '%ld' requires an argument of type 'long', but variadic argument 1 has type '__int64'
+  C:\Users\omric\Desktop\final\sim\main.c(131,21):
+  consider using '%lld' in the format string
+  C:\Users\omric\Desktop\final\sim\main.c(131,21):
+  consider using '%Id' in the format string
+  C:\Users\omric\Desktop\final\sim\main.c(131,21):
+  consider using '%I64d' in the format string
+  
+  sim.vcxproj -> C:\Users\omric\Desktop\final\sim\x64\Debug\sim.exe

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerCommandArguments>"$(SolutionDir)..\binom\imemin.txt" "$(SolutionDir)..\binom\dmemin.txt" "$(SolutionDir)..\binom\diskin.txt" "$(SolutionDir)..\binom\irq2in.txt" "$(SolutionDir)..\binom\dmemout.txt" "$(SolutionDir)..\binom\regout.txt" "$(SolutionDir)..\binom\trace.txt" "$(SolutionDir)..\binom\hwregtrace.txt" "$(SolutionDir)..\binom\cycles.txt" "$(SolutionDir)..\binom\leds.txt" "$(SolutionDir)..\binom\display7seg.txt" "$(SolutionDir)..\binom\diskout.txt" "$(SolutionDir)..\binom\monitor.txt" "$(SolutionDir)..\binom\monitor.yuv"</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+</Project>
