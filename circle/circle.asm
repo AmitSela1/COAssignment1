@@ -1,3 +1,5 @@
+    //hi
+    
     add $s1, $zero, $zero, $zero, 0, 0            # Initialize row index to 0
     lw $s0, $zero, $imm1, $zero, 0x100, 0           # get circle radius from memory
     beq $zero, $s0, $zero, $imm2, 0, TERMINATE    # finish if radius is zero
