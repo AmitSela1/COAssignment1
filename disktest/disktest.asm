@@ -1,4 +1,4 @@
-RAK HAIFA IS MACCABI
+
 out $zero, $zero, $imm1, $imm1, 1, 0          # Enable IRQ1 for disk read/write completion interrupts
 out $zero, $imm1, $zero, $imm2, 6, Irq1       # Set the IRQ1 interrupt handler to the address labeled 'Irq1'
 add $t0, $imm1, $zero, $zero, 7, 0            # Initialize loop counter $t0 to 7 (for 8 iterations: sectors 0 to 7)
