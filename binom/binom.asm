@@ -1,3 +1,6 @@
+//12334545867438
+
+
 sll $sp, $imm1, $imm2, $zero, 1, 10          # set $sp with stack pointer base address 1024
 lw $a0, $zero, $imm2, $zero, 0, 0x100       # Load the value of n from memory location 0x100 into $a0
 lw $a1, $zero, $imm2, $zero, 0, 0x101       # Load the value of k from memory location 0x101 into $a1
