@@ -1,4 +1,4 @@
-    //hi
+    //hi*********
     
     add $s1, $zero, $zero, $zero, 0, 0            # set row index to 0
     lw $s0, $zero, $imm1, $zero, 0x100, 0           # load circle radius from memory
