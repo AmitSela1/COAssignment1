@@ -29,4 +29,4 @@ draw: mac $t0, $s1, $imm1, $s2, 256, 0           # calculate pixel index
     out $zero, $imm1, $zero, $a2, 21, 0          # set the pixel color (black or white)
     out $zero, $imm1, $zero, $imm2, 22, 1         # write the pixel to the screen
     beq $zero, $zero, $zero, $ra, 0, 0           # return to pixel calculation
-    .word 0x100 10              # data section (value is placeholder)      # Preset value for demonstration
+    .word 0x100 10              # data section (value is placeholder)            # data section (value is placeholder)      # Preset value for demonstration
