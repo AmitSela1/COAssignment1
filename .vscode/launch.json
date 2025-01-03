@@ -2,14 +2,42 @@
   "version": "0.2.0",
   "configurations": [
     {
+<<<<<<< HEAD
+=======
+      "name": "(gdb) Attach",
+      "type": "cppdbg",
+      "request": "attach",
+      "program": "enter program name, for example ${workspaceFolder}/a.exe",
+      "MIMode": "gdb",
+      "miDebuggerPath": "/path/to/gdb",
+      "setupCommands": [
+          {
+              "description": "Enable pretty-printing for gdb",
+              "text": "-enable-pretty-printing",
+              "ignoreFailures": true
+          },
+          {
+              "description": "Set Disassembly Flavor to Intel",
+              "text": "-gdb-set disassembly-flavor intel",
+              "ignoreFailures": true
+          }
+      ]
+    },
+    {
+>>>>>>> d6f1686428c72b6ca4698a6a38172206fb16e3d4
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
+<<<<<<< HEAD
       "cwd": "c:/Users/itay/Desktop/computer project/COAssignment1",
       "program": "c:/Users/itay/Desktop/computer project/COAssignment1/build/Debug/outDebug",
+=======
+      "cwd": ".",
+      "program": "build/Debug/outDebug",
+>>>>>>> d6f1686428c72b6ca4698a6a38172206fb16e3d4
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
