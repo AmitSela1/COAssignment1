@@ -6,12 +6,13 @@
 rowscan: blt $zero, $s1, $imm1, $imm2, 256, column_scan    # loop through each screen row
     beq $zero, $zero, $zero, $imm2, 0, terminate  # terminate after the last row
 
-columnscan: blt $zero, $s2, $imm1, $imm2, 256, pixel_calc  # loop through each screen column
+columnscan:
+    blt $zero, $s2, $imm1, $imm2, 256, pixel_calc  # loop through each screen column
     add $s2, $zero, $zero, $zero, 0, 0                      # reset column index at the start of each row
     add $s1, $s1, $imm1, $zero, 1, 0                        # increment row index
     beq $zero, $zero, $zero, $imm2, 0, row_scan             # return to row scanning
 
-pixelcalc:   # check if the current pixel is inside the circle
+pixelcalc:                                                  # check if the current pixel is inside the circle
     add $a0, $zero, $zero, $zero, 0, 0                      # prepare for coordinate transformation
     sub $t0, $s1, $imm1, $zero, 127, 0                      # convert row to x coordinate
     mac $t0, $t0, $t0, $zero, 0, 0                          # calculate x^2

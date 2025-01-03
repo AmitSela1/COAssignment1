@@ -317,11 +317,13 @@ int get_num_val(const char* field, char* label_addresses[DEPTH_OF_INSTRUCTIONS])
 }
 
 /// <summary>
-/// returns a sting cointains the label if contains label or null if doesn't 
+/// Returns a string containing the label if one is found; otherwise, returns NULL.
 /// </summary>
-/// <param name="cur_cleaned_line"></param>
-/// <param name="label_and_inst"></param>
-/// <returns></returns>
+/// <param name="cur_cleaned_line">cleaned of unnecessary spaces and formatting.</param>
+/// <param name="label_and_inst">
+/// A pointer to a boolean value. Set to TRUE if the label is inline with an instruction; otherwise, remains FALSE.
+/// </param>
+/// <returns>A dynamically allocated string containing the label, or NULL if no label is found.</returns>
 char* get_label(char* cur_cleaned_line, BOOL* label_and_inst)
 {
 	int length_of_label = 0;

@@ -30,38 +30,38 @@ int main(int argc, char* argv[])
 	//global variabels and ptrs
 	int instruction_cnt = 0;
 	Line_Type Type_of_inst = 0;
-	char* temp_label;
+	char* temp_label = NULL;
 	char* label_addresses_lst[DEPTH_OF_INSTRUCTIONS] = {0};
 	int* data_memory = (int*)calloc(DEPTH_OF_MEMORY, sizeof(int));
 	char cur_line[MAX_LINE_LENGTH];
 	char cur_cleaned_line[MAX_LINE_LENGTH];
 	Instruction sInstruction;
 	
-	// first run - and creating a label list
+	// First pass: Read the program and create a list of labels with their corresponding addresses
 	int i = 0;
-	while (!feof(fProgram)) { //enter the loop if didnt finish reading the file
-		if (read_cur_line(fProgram, cur_line) == 0) continue; // loads the line from the *.asm file to line and checks if empty
+	while (!feof(fProgram)) { // Continue until the end of the file
+		if (read_cur_line(fProgram, cur_line) == 0) continue; // reads the current line from the *.asm file and skip to the next iteration if the line is empty
 		
-		//checking is cur kine is a label or label+ instraction
+		// Check if the current line contains a label or a label with an instruction
 		BOOL label_and_inst = 0;
-		clean_line(cur_line, cur_cleaned_line);
-		temp_label = get_label(cur_cleaned_line, &label_and_inst);
-		if (strlen(cur_cleaned_line) == 0) continue; // empty line, not interesting
+		clean_line(cur_line, cur_cleaned_line); // Remove unnecessary spaces and format the line
+		temp_label = get_label(cur_cleaned_line, &label_and_inst); // Extract label if present and check if it's inline with an instruction
+		if (strlen(cur_cleaned_line) == 0) continue; // Skip the iteration if the cleaned line is empty
 		if (temp_label) {
-			label_addresses_lst[instruction_cnt] = temp_label;//add to label sdresses list
-			instruction_cnt += (int)label_and_inst;// add to instruction count only if the label is inline label
+			label_addresses_lst[instruction_cnt] = temp_label;// Add the label to the label-address list
+			instruction_cnt += (int)label_and_inst; // Increment the instruction count if the label is inline with an instruction
 		}
 		else if (found_pseudo(cur_cleaned_line))
 		{
-			manage_pseudo(cur_cleaned_line, data_memory);
+			manage_pseudo(cur_cleaned_line, data_memory); // Handle pseudo-instructions and update data memory as needed
 			
 		}
 		else if (line_is_comment(cur_cleaned_line))
 		{
-			// This is a comment - nothing to do
+			 // Skip processing if the line is a comment
 		}
 		else {
-			// This is an actual instruction- only count in the first run
+			// Increment the instruction count for valid instructions
 			instruction_cnt++;
 		}
 	}
