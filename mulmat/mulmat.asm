@@ -4,7 +4,7 @@ RowIteration: # Loop over each row of the result matrix
     add $s1, $zero, $zero, $zero, 0, 0                 # Initialize column counter j to 0 for each row
 
 ColIteration:     
-    add $s2, $zero, $zero, $zero, 0, 0                 # Initialize element counter k for the dot product
+	add $s2, $zero, $zero, $zero, 0, 0                 # Initialize element counter k for the dot product
     add $t1, $zero, $zero, $zero, 0, 0                 # Reset accumulator for C[i][j]
     sll $t2, $s0, $imm1, $zero, 2, 0                   # Calculate base address for row i of C
     add $t2, $t2, $s1, $zero, 0, 0                     # Add column j offset for C[i][j]

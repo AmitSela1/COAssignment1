@@ -29,7 +29,7 @@ sub $a1, $a1, $imm1, $zero, 1, 0                 # calc k - 1
 jal $ra, $zero, $zero, $imm1, CalcBinom, 0       # rec call for binom(n-1, k-1)
 add $v0, $v0, $s0, $zero, 0, 0                   # add the two previous results
 
-Done:
+Done: 
 lw $a1, $sp, $imm1, $zero, 0, 0                  # Restore $a1
 lw $a0, $sp, $imm1, $zero, 1, 0                  # Restore $a0
 lw $ra, $sp, $imm1, $zero, 2, 0                  # Restore $ra
