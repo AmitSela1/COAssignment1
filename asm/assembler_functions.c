@@ -124,7 +124,7 @@ Line_Type get_line_type(char* cur_line, Instruction* sInstruction ,char* label_a
 		return_value = COMMENT;
 	}
 	//checks if the line conatains label or label + instruction
-	else if (found_label(cur_cleaned_line)) {
+	else if (found_label(cur_cleaned_line)) {  // check if the line contains a label
 		strtok(cur_cleaned_line, ":");
 		char* maybe_inst = strtok(NULL, ":");
 		if (maybe_inst)
@@ -156,6 +156,7 @@ Line_Type get_line_type(char* cur_line, Instruction* sInstruction ,char* label_a
 /// <returns></returns>
 int clean_line(const char* line_to_fix, char* line_fixed)
 {
+	//variable declaration
 	char c;
 	int i = 0;
 	int j = 0;

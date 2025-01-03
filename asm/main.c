@@ -3,7 +3,7 @@
 #include "structs.h"
 #include "definitions.h"
 #include "assembler_functions.h"
-//hi this is amit
+
 
 
 int main(int argc, char* argv[])
@@ -66,15 +66,15 @@ int main(int argc, char* argv[])
 		}
 	}
 	
-	//return to the beginning of the asm file
+	//returns the pointer to the beginning of the asm file
 	fseek(fProgram, 0, 0);
 
 	// Second run - handeling the regular instructions 
 	int line_counter = 1;
-	while (!feof(fProgram)) {
+	while (!feof(fProgram)) {                      // feof is a function that checks if the end of a file has been reached.      
 		if (read_cur_line(fProgram, cur_line) == 0) continue; // empty line, not interesting
 		//clean_line(cur_line, cur_cleaned_line);
-		Type_of_inst = get_line_type(cur_line, &sInstruction, label_addresses_lst, fImemin);
+		Tiype_of_inst = get_line_type(cur_line, &sInstruction, label_addresses_lst, fImemin);
 
 		switch (Type_of_inst)
 		{
