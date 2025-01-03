@@ -11,7 +11,8 @@ int main(int argc, char* argv[])
 #undef TEST
 #if defined(TEST)
     
-    const char* directory = "..";
+    //save pthhs to file name in argv[i]
+    const char* directory = "..";       
     sprintf(argv[1], "%s\\%s\\%s", directory, TEST, "imemin.txt");
     sprintf(argv[2], "%s\\%s\\%s", directory, TEST, "dmemin.txt");
     sprintf(argv[3], "%s\\%s\\%s", directory, TEST, "diskin.txt");
@@ -49,8 +50,8 @@ int main(int argc, char* argv[])
     FILE* output_files[] = { imemin, dmemin, diskin, irq2in, dmemout, regout, trace, hwregtrace, cycles, leds, display7seg, diskout, monitor, monitor_yuv };
 
     //pointers
-    TYPE_OF_INSTRUCTION* inst_mem = (TYPE_OF_INSTRUCTION*)malloc(sizeof(TYPE_OF_INSTRUCTION) * DEPTH_OF_INSTRUCTIONS);
-    DATA* data_mem = (DATA*)calloc(DEPTH_OF_MEMORY, sizeof(DATA));
+    TYPE_OF_INSTRUCTION* inst_mem = (TYPE_OF_INSTRUCTION*)malloc(sizeof(TYPE_OF_INSTRUCTION) * DEPTH_OF_INSTRUCTIONS); //Allocates a block of memory of the specified size
+    DATA* data_mem = (DATA*)calloc(DEPTH_OF_MEMORY, sizeof(DATA)); //Allocates and initializes the memory to zero
     char* monitor_mem = (char*)calloc(SCREEN_X_AXIS * SCREEN_Y_AXIS, sizeof(char));
     DATA* disk_mem = (DATA*)calloc(NUM_OF_DISK_SECTORS* WORDS_IN_SECTOR, sizeof(DATA));
 
@@ -61,9 +62,9 @@ int main(int argc, char* argv[])
     read_and_load_data(dmemin, data_mem);
    
     //global variabels
-    unsigned short PC = 0;
-    Instruction cur_inst;
-    BOOL halt = FALSE;
+    unsigned short PC = 0; //16-bit unsigned integer initialized to 0
+    Instruction cur_inst; //storing the current instruction
+    BOOL halt = FALSE; //A boolean flag indicating whether the simulation should stop (TRUE or FALSE).
     BOOL irq = 0;
     BOOL interrupt_input = 0;
     
@@ -75,11 +76,12 @@ int main(int argc, char* argv[])
     long long int cycles_cnt = 0;
     short disk_cnt = 1024;
 
+    //start simulation - Main Simulation Loop
     while (!halt && PC < DEPTH_OF_INSTRUCTIONS)//continue as long as hult command was not given and there is an istruction to execute 
     {
 
-        // get instruction
-        get_instruction(inst_mem[PC], &cur_inst);
+        // get instruction  
+        get_instruction(inst_mem[PC], &cur_inst); //Fetches the instruction at PC from inst_mem and stores it in cur_inst.
         
         // load constants values to reg list
         load_const_val_to_reg_list(registers_lst,&cur_inst);
@@ -87,8 +89,8 @@ int main(int argc, char* argv[])
         //write current line in trace befor executing an instruction
         update_line_in_trace(PC, inst_mem[PC], registers_lst, trace);
 
-        // execute instruction
-        execute_inst(&cur_inst, &PC, registers_lst, IOregisters_lst, data_mem, &halt, &interrupt_input);
+        // execute instruction 
+        execute_inst(&cur_inst, &PC, registers_lst, IOregisters_lst, data_mem, &halt, &interrupt_input); //updating the program state (PC, registers, memory, etc.).
 
         //write current line in trace befor executing an instruction
         load_const_val_to_reg_list(registers_lst, &cur_inst);
@@ -122,7 +124,7 @@ int main(int argc, char* argv[])
 
     }
     
-    int memory_depth = find_last_non_zero(data_mem, DEPTH_OF_MEMORY);
+    int memory_depth = find_last_non_zero(data_mem, DEPTH_OF_MEMORY); //Finds the last non-zero element in the memory array to optimize file writing.
     int disk_depth = find_last_non_zero(disk_mem, NUM_OF_DISK_SECTORS*WORDS_IN_SECTOR);
 
     // loads output files
