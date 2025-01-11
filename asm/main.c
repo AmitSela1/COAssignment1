@@ -26,7 +26,6 @@ int main(int argc, char* argv[])
 	FILE* fDmemin = fopen(argv[3], "w");
 	
 
-
 	//global variabels and ptrs
 	int instruction_cnt = 0;
 	Line_Type Type_of_inst = 0;
