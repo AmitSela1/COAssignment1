@@ -28,8 +28,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/itay/Desktop/computer project/COAssignment1/asm",
-      "program": "c:/Users/itay/Desktop/computer project/COAssignment1/asm/build/Debug/outDebug",
+      "cwd": "c:/Users/itay/Desktop/computer project/COAssignment1/asm/asm/x64/Debug",
+      "program": "c:/Users/itay/Desktop/computer project/COAssignment1/asm/asm/x64/Debug/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

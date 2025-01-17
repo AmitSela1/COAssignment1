@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
     sprintf(argv[13], "%s\\%s\\%s", directory, TEST, "monitor.txt");
     sprintf(argv[14], "%s\\%s\\%s", directory, TEST, "monitor.yuv");
 #endif
- 
+    printf("simulator is compiled");
     // opening input files
     FILE* imemin = fopen(argv[1], "r");
     FILE* dmemin = fopen(argv[2], "r");
@@ -74,15 +74,15 @@ int main(int argc, char* argv[])
     //counters
     long long int cycles_cnt = 0;
     short disk_cnt = 1024;
-
+    registers_lst[ZERO] = 0;
     while (!halt && PC < DEPTH_OF_INSTRUCTIONS)//continue as long as hult command was not given and there is an istruction to execute 
     {
 
         // get instruction
-        get_instruction(inst_mem[PC], &cur_inst);
+        fetch_instruction(inst_mem[PC], &cur_inst);
         
         // load constants values to reg list
-        load_const_val_to_reg_list(registers_lst,&cur_inst);
+        load_imm_to_reg_list(registers_lst,&cur_inst);
    
         //write current line in trace befor executing an instruction
         update_line_in_trace(PC, inst_mem[PC], registers_lst, trace);
@@ -91,7 +91,7 @@ int main(int argc, char* argv[])
         execute_inst(&cur_inst, &PC, registers_lst, IOregisters_lst, data_mem, &halt, &interrupt_input);
 
         //write current line in trace befor executing an instruction
-        load_const_val_to_reg_list(registers_lst, &cur_inst);
+        load_imm_to_reg_list(registers_lst, &cur_inst);
       
         //if the opcode are out or in we write current line in hwtrace after executing an instruction
         handel_hwtrace(&cur_inst, &cycles_cnt, IOregisters_lst, registers_lst, hwregtrace);
@@ -147,4 +147,6 @@ int main(int argc, char* argv[])
     free(data_mem);
     free(monitor_mem);
     free(disk_mem);
+	printf("simulator is done");
+    
 }

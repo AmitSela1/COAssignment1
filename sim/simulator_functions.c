@@ -5,7 +5,7 @@
 /// </summary>
 /// <param name="cur_inst_mem"></param>
 /// <param name="cur_inst"></param>
-void get_instruction(TYPE_OF_INSTRUCTION cur_inst_mem, Instruction* cur_inst)
+void fetch_instruction(TYPE_OF_INSTRUCTION cur_inst_mem, Instruction* cur_inst)
 {
 	int idx = SIZE_OF_INSTRUCTION_BITS;
 	
@@ -631,9 +631,9 @@ void handel_hwtrace(Instruction* cur_inst, long long int* cycles_cnt, DATA* IOre
 /// </summary>
 /// <param name="registers_lst"></param>
 /// <param name="cur_inst"></param>
-void load_const_val_to_reg_list(DATA* registers_lst, Instruction* cur_inst)
+void load_imm_to_reg_list(DATA* registers_lst, Instruction* cur_inst)
 {
-	registers_lst[ZERO] = 0;
+	//loading the immutabel registers from the instruction to the registers list
 	registers_lst[IMM1] = cur_inst->immediate1;
 	registers_lst[IMM2] = cur_inst->immediate2;
 }

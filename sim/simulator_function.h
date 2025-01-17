@@ -8,7 +8,7 @@
 #include "definitions.h"
 #include "structs.h"
 
-void get_instruction(TYPE_OF_INSTRUCTION instruction_bytes, Instruction* inst);
+void fetch_instruction(TYPE_OF_INSTRUCTION instruction_bytes, Instruction* inst);
 void read_and_load_instruction(FILE*, TYPE_OF_INSTRUCTION*);
 void read_and_load_data(FILE*, DATA*);
 DATA get_numeric_value_from_hex_data(const char* field);
@@ -28,7 +28,7 @@ void handel_interrupt(DATA* IOregisters_lst, BOOL* irq, BOOL* interrupt_input, u
 void handel_leds(Instruction* cur_inst, DATA* registers_lst, long long int* cycles_cnt, DATA* IOregisters_lst, FILE* leds);
 void handel_disply7seg(Instruction* cur_inst, DATA* registers_lst, long long int* cycles_cnt, DATA* IOregisters_lst, FILE* display7seg);
 void handel_hwtrace(Instruction* cur_inst, long long int* cycles_cnt, DATA* IOregisters_lst, DATA* registers_lst, FILE* hwregtrace);
-void load_const_val_to_reg_list(DATA* registers_lst, Instruction* cur_inst);
+void load_imm_to_reg_list(DATA* registers_lst, Instruction* cur_inst);
 void handel_irq2(long long int* cycles_cnt, long long int* irq_2_input, DATA* IOregisters_lst);
 void finish_up_line(long long int* cycles_cnt, FILE* leds, FILE* display7seg, FILE* trace, FILE* hwregtrace);
 #endif
