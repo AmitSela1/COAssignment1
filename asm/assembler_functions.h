@@ -12,6 +12,8 @@
 #include "definitions.h"
 
 
+void first_pass(FILE* input, char* labels[DEPTH_OF_INSTRUCTIONS], int* memory_data);
+void second_pass(FILE* input, FILE* imemin, char* labels[DEPTH_OF_INSTRUCTIONS], int* memory_data, Instruction* sInstruction);
 int read_cur_line(FILE* input, char* line);
 int get_and_encode_instruction(const char* line, Instruction* output, char* labels[DEPTH_OF_INSTRUCTIONS], FILE* imemin);
 Line_Type get_line_type(char* cur_line, Instruction* sInstruction, char* label_addresses_lst[DEPTH_OF_INSTRUCTIONS], FILE* fImemin);

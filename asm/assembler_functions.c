@@ -1,5 +1,77 @@
 #include "assembler_functions.h"
 
+
+/// <summary>
+///  first pass of the assembler, creates a label list and counts the number of instructions
+/// </summary>
+/// <param name="input"></param>
+/// <param name="labels"></param>
+/// <param name="memory_data"></param>
+void first_pass(FILE* input, char* labels[DEPTH_OF_INSTRUCTIONS], int* memory_data) {
+	char cur_line[MAX_LINE_LENGTH];
+	char cur_cleaned_line[MAX_LINE_LENGTH];
+	int PC = 0;
+	char* temp_label;
+	// first run - and creating a label list
+	while (!feof(input)) { //enter the loop if didnt finish reading the file
+		if (read_cur_line(input, cur_line) == 0) continue; // loads the line from the *.asm file to line and checks if empty
+
+		//checking is cur kine is a label or label+ instraction
+		BOOL label_and_inst = 0;
+		clean_line(cur_line, cur_cleaned_line);
+		temp_label = get_label(cur_cleaned_line, &label_and_inst);
+		if (strlen(cur_cleaned_line) == 0) continue; // empty line, not interesting
+		if (temp_label) {
+			labels[PC] = temp_label;//add to label sdresses list
+			PC += (int)label_and_inst;// add to instruction count only if the label is inline label
+		}
+		else if (found_pseudo(cur_cleaned_line))
+		{
+			manage_pseudo(cur_cleaned_line, memory_data);
+
+		}
+		else if (line_is_comment(cur_cleaned_line))
+		{
+			// This is a comment - nothing to do
+		}
+		else {
+			// This is an actual instruction- only count in the first run
+			PC++;
+		}
+	}
+}
+/// <summary>
+/// second pass of the assembler, handles the regular instructions
+/// </summary>
+/// <param name="input"></param>
+/// <param name="imemin"></param>
+/// <param name="labels"></param>
+/// <param name="memory_data"></param>
+/// <param name="sInstruction"></param>
+void second_pass(FILE* input, FILE* imemin, char* labels[DEPTH_OF_INSTRUCTIONS], int* memory_data, Instruction* sInstruction){
+	Line_Type Type_of_inst = 0;
+	char cur_line[MAX_LINE_LENGTH];
+	char cur_cleaned_line[MAX_LINE_LENGTH];
+	int line_counter = 1;
+	
+	while (!feof(input)) {										// feof is a function that checks if the end of a file has been reached.      
+		if (read_cur_line(input, cur_line) == 0) continue;		// empty line, not interesting
+		clean_line(cur_line, cur_cleaned_line);					// clean the line from spaces and tabs
+		Type_of_inst = get_line_type(cur_cleaned_line, sInstruction, labels, imemin);
+
+		switch (Type_of_inst)
+		{
+		case REGULAR_INST:
+			line_counter++;
+		case PSEUDO:
+		case LABEL:
+		case COMMENT:
+			break;
+		}
+	}
+
+}
+	
 /// <summary>
 ///  reads the cuurent line from the input file
 /// </summary>
@@ -39,9 +111,11 @@ int get_and_encode_instruction(const char* line, Instruction* inst, char* labels
 	int bit_index = SIZE_OF_INSTRUCTION_BITS;
 	char leading_zeros[SIZE_OF_INSTRUCTION_CHARS + 1] = "000000000000";
 	char hex[SIZE_OF_INSTRUCTION_CHARS + 1];
-
+	char line_copy[MAX_LINE_LENGTH];
+	strncpy(line_copy, line, MAX_LINE_LENGTH - 1);
+	line_copy[MAX_LINE_LENGTH - 1] = '\0';
 	// get opcode
-	field = strtok(line, delim);
+	field = strtok(line_copy, delim);
 	inst->opcode = get_op(field);
 
 	// get rd
@@ -233,11 +307,12 @@ OpCode get_op(const char* opcode)
 		"bgt", "ble", "bge", "jal", "lw", "sw",
 		"reti", "in", "out", "halt", NULL
 	};
-	lower_str(opcode, opcode);
+	char* lower_opcode = malloc(strlen(opcode) + 1); // Allocate memory for the lowercase opcode string
+	lower_str(opcode, lower_opcode);
 	// Iterate through the opcodes_str array
 	for (int i = 0; opcodes_str[i] != NULL; i++) {
 		// Compare the input opcode string with each opcode string in the array
-		if (strcmp(opcode, opcodes_str[i]) == 0) {
+		if (strcmp(lower_opcode, opcodes_str[i]) == 0) {
 			// If a match is found, return the corresponding OpCode enum value
 			return (OpCode)i;
 		}
@@ -251,8 +326,8 @@ OpCode get_op(const char* opcode)
 /// <returns></returns>
 Register get_reg(const char* reg)
 {
-	//char lower_reg[MAX_REG_NAME]; // Assume MAX_REG_NAME is defined appropriately
-	lower_str(reg, reg); // Converts 'reg' to lowercase and stores in 'lower_reg'
+	char* lower_reg = malloc(strlen(reg) + 1); // Allocate memory for the lowercase register string
+	lower_str(reg, lower_reg); // Converts 'reg' to lowercase and stores in 'lower_reg'
 
 	// Array of register names in lowercase to match the lowercase input
 	const char* reg_names_str[] = {
@@ -261,7 +336,7 @@ Register get_reg(const char* reg)
 	};
 
 	for (int i = 0; i < 16; i++) {
-		if (strcmp(reg, reg_names_str[i]) == 0) {
+		if (strcmp(lower_reg, reg_names_str[i]) == 0) {
 			return (Register)i;
 		}
 	}
@@ -327,7 +402,7 @@ char* get_label(char* cur_cleaned_line, BOOL* label_and_inst)
 {
 	int length_of_label = 0;
 	char* str_Label = NULL;
-	clean_line(cur_cleaned_line, cur_cleaned_line);
+	clean_line(cur_cleaned_line, cur_cleaned_line);   //clean the line but not needed because it was cleaned before
 	if (found_label(cur_cleaned_line)) {
 		char* T = strtok(cur_cleaned_line, ":");
 		length_of_label = strlen(T);
@@ -346,6 +421,7 @@ char* get_label(char* cur_cleaned_line, BOOL* label_and_inst)
 	return str_Label;
 }
 
+
 /// <summary>
 /// loads the data to the memory from the pseudo instaction
 /// </summary>
@@ -356,7 +432,7 @@ void manage_pseudo(const char* cur_line, int* memory_data) {
 	char* space = " ";
 	Word pseudo;
 
-	// skip instruction (known to be .word at this point)
+
 	field = strtok(cur_line, space);
 
 	field = strtok(NULL, space);
@@ -390,10 +466,10 @@ void load_data_to_file(FILE* output_file, DATA* output_data, int line_num) {
 /// <param name="data_memory"></param>
 /// <param name="memory_size"></param>
 /// <returns></returns>
-int find_last_non_zero(DATA* data_memory, int memory_size)
+int find_last_non_zero(DATA* data_memory, int max_size)
 {
 	int idx_of_last_non_zero = 0;
-	for (int i = 0; i < memory_size; i++)
+	for (int i = 0; i < max_size; i++)
 	{
 		if (data_memory[i] != 0)
 		{
@@ -404,7 +480,7 @@ int find_last_non_zero(DATA* data_memory, int memory_size)
 }
 
 /// <summary>
-/// return TRUE if the current line is indeed a labellabel
+/// return TRUE if the current line is indeed a label
 /// </summary>
 /// <param name="cur_line"></param>
 /// <returns></returns>
@@ -428,10 +504,10 @@ BOOL found_label(const char* cur_line) {
 BOOL found_pseudo(const char* cur_line) {
 	for (int i = 0; cur_line[i] != '\0'; ++i) {
 		if (cur_line[i] == '#') {
-			return FALSE; // If we hit a comment before finding a label, return FALSE.
+			return FALSE; // If we hit a comment before finding a pseudo, return FALSE.
 		}
 		if (cur_line[i] == '.') {
-			return TRUE; // If we find a colon, it indicates a label.
+			return TRUE; // If we find a dot, it indicates a pseudo instruction.
 		}
 	}
 	return FALSE; // Return FALSE if no label is found.

@@ -3,10 +3,10 @@
     beq $zero, $s0, $zero, $imm2, 0, terminate              # exit if the radius is zero
     mac $s0, $s0, $s0, $zero, 0, 0                          # compute the square of the radius 
 
-RowScan: blt $zero, $s1, $imm1, $imm2, 256, column_scan    # loop through each screen row
+RowScan: blt $zero, $s1, $imm1, $imm2, 256, ColumnScan    # loop through each screen row
     beq $zero, $zero, $zero, $imm2, 0, terminate  # terminate after the last row
 
-ColumnScan: blt $zero, $s2, $imm1, $imm2, 256, pixel_calc  # loop through each screen column
+ColumnScan: blt $zero, $s2, $imm1, $imm2, 256, PixelCalc  # loop through each screen column
     add $s2, $zero, $zero, $zero, 0, 0                      # reset column index at the start of each row
     add $s1, $s1, $imm1, $zero, 1, 0                        # increment row index
     beq $zero, $zero, $zero, $imm2, 0, row_scan             # return to row scanning
@@ -17,16 +17,16 @@ PixelCalc:   # check if the current pixel is inside the circle
     mac $t0, $t0, $t0, $zero, 0, 0                          # calculate x^2
     sub $t1, $s2, $imm1, $zero, 127, 0                      # convert column to y coordinate
     mac $a0, $t1, $t1, $t0, 0, 0                            # calculate y^2 + x^2
-    jal $ra, $zero, $zero, $imm2, 0, draw_pixel             # set pixel color based on the calculated distance
+    jal $ra, $zero, $zero, $imm2, 0, DrawPixel             # set pixel color based on the calculated distance
     add $s2, $s2, $zero, $imm1, 1, 0                        # increment column index
-    beq $zero, $zero, $zero, $imm2, 0, column_scan          # move to the next pixel in the row
+    beq $zero, $zero, $zero, $imm2, 0, ColumnScan          # move to the next pixel in the row
 
 Terminate: halt $zero, $zero, $zero, $zero, 0, 0            # end the program
 
-DrawPixel: ble $zero, $a0, $s0, $imm2, 0, in_circle        # if pixel is inside the circle (within radius squared)
+DrawPixel: ble $zero, $a0, $s0, $imm2, 0, InCircle        # if pixel is inside the circle (within radius squared)
 
 OutCircle: add $a2, $imm1, $zero, $zero, 0, 0              # set pixel to black (outside circle)
-    beq $zero, $zero, $zero, $imm2, 0, draw                 # continue to draw the pixel
+   beq $zero, $zero, $zero, $imm2, 0, Draw                 # continue to draw the pixel
 
 InCircle: add $a2, $imm1, $zero, $zero, 255, 0             # set pixel to white (inside circle)
 

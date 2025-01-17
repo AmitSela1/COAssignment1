@@ -31,7 +31,7 @@ typedef enum _OpCode {
 
 //this is an insruction
 typedef struct _Instruction {
-	enum OpCode opcode;
+	OpCode opcode;
 	int rd;
 	int rs;
 	int rt;

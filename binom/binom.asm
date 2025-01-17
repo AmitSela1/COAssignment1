@@ -36,5 +36,5 @@ lw $ra, $sp, $imm1, $zero, 2, 0                  # Restore $ra
 lw $s0, $sp, $imm1, $zero, 3, 0                  # Restore $s0
 add $sp, $sp, $imm1, $zero, 4, 0                 # set stack pointer back
 beq $zero, $zero, $zero, $ra, 0, 0               # Return to caller
-.word 0x100 6
+.word 0x100 20
 .word 0x101 3

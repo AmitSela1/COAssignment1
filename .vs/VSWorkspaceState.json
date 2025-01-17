@@ -1,11 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\binom",
-    "\\circle",
-    "\\disktest",
-    "\\mulmat"
+    "\\asm",
+    "\\asm\\asm\\x64\\Debug",
+    "\\asm\\x64",
+    "\\asm\\x64\\Debug",
+    "\\binom"
   ],
-  "SelectedNode": "\\mulmat\\mulmat.asm",
+  "SelectedNode": "\\binom\\binom.asm",
   "PreviewInSolutionExplorer": false
 }

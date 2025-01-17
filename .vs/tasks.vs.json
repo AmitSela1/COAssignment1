@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "task-COAssignment1",
+      "appliesTo": "/",
+      "type": "launch"
+    }
+  ]
+}

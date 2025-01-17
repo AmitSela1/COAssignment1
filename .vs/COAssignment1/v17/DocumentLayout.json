@@ -1,22 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\AmitSela\\source\\repos\\COAssignment1\\",
+  "WorkspaceRootPath": "C:\\Users\\itay\\Desktop\\computer project\\COAssignment1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\AmitSela\\source\\repos\\COAssignment1\\mulmat\\mulmat.asm||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:mulmat\\mulmat.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\itay\\Desktop\\computer project\\COAssignment1\\asm\\assembler_functions.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:asm\\assembler_functions.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\AmitSela\\source\\repos\\COAssignment1\\disktest\\disktest.asm||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:disktest\\disktest.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\itay\\Desktop\\computer project\\COAssignment1\\binom\\imemin.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:binom\\imemin.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\AmitSela\\source\\repos\\COAssignment1\\binom\\binom.asm||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:binom\\binom.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\itay\\Desktop\\computer project\\COAssignment1\\asm\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:asm\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\AmitSela\\source\\repos\\COAssignment1\\circle\\circle.asm||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:circle\\circle.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\itay\\Desktop\\computer project\\COAssignment1\\asm\\assembler_functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:asm\\assembler_functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,62 +26,89 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "mulmat.asm",
-              "DocumentMoniker": "C:\\Users\\AmitSela\\source\\repos\\COAssignment1\\mulmat\\mulmat.asm",
-              "RelativeDocumentMoniker": "mulmat\\mulmat.asm",
-              "ToolTip": "C:\\Users\\AmitSela\\source\\repos\\COAssignment1\\mulmat\\mulmat.asm",
-              "RelativeToolTip": "mulmat\\mulmat.asm",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-22T15:37:53.994Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "disktest.asm",
-              "DocumentMoniker": "C:\\Users\\AmitSela\\source\\repos\\COAssignment1\\disktest\\disktest.asm",
-              "RelativeDocumentMoniker": "disktest\\disktest.asm",
-              "ToolTip": "C:\\Users\\AmitSela\\source\\repos\\COAssignment1\\disktest\\disktest.asm",
-              "RelativeToolTip": "disktest\\disktest.asm",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-22T15:37:36.577Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "binom.asm",
-              "DocumentMoniker": "C:\\Users\\AmitSela\\source\\repos\\COAssignment1\\binom\\binom.asm",
-              "RelativeDocumentMoniker": "binom\\binom.asm",
-              "ToolTip": "C:\\Users\\AmitSela\\source\\repos\\COAssignment1\\binom\\binom.asm",
-              "RelativeToolTip": "binom\\binom.asm",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-22T15:37:15.157Z",
+              "Title": "main.c",
+              "DocumentMoniker": "C:\\Users\\itay\\Desktop\\computer project\\COAssignment1\\asm\\main.c",
+              "RelativeDocumentMoniker": "asm\\main.c",
+              "ToolTip": "C:\\Users\\itay\\Desktop\\computer project\\COAssignment1\\asm\\main.c",
+              "RelativeToolTip": "asm\\main.c",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADEAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-01-12T17:02:09.134Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "circle.asm",
-              "DocumentMoniker": "C:\\Users\\AmitSela\\source\\repos\\COAssignment1\\circle\\circle.asm",
-              "RelativeDocumentMoniker": "circle\\circle.asm",
-              "ToolTip": "C:\\Users\\AmitSela\\source\\repos\\COAssignment1\\circle\\circle.asm",
-              "RelativeToolTip": "circle\\circle.asm",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-22T15:20:33.769Z",
+              "Title": "assembler_functions.h",
+              "DocumentMoniker": "C:\\Users\\itay\\Desktop\\computer project\\COAssignment1\\asm\\assembler_functions.h",
+              "RelativeDocumentMoniker": "asm\\assembler_functions.h",
+              "ToolTip": "C:\\Users\\itay\\Desktop\\computer project\\COAssignment1\\asm\\assembler_functions.h",
+              "RelativeToolTip": "asm\\assembler_functions.h",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-15T18:16:38.256Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "assembler_functions.c",
+              "DocumentMoniker": "C:\\Users\\itay\\Desktop\\computer project\\COAssignment1\\asm\\assembler_functions.c",
+              "RelativeDocumentMoniker": "asm\\assembler_functions.c",
+              "ToolTip": "C:\\Users\\itay\\Desktop\\computer project\\COAssignment1\\asm\\assembler_functions.c",
+              "RelativeToolTip": "asm\\assembler_functions.c",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAiwNkAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-01-16T12:50:48.575Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "134c5f09-b71e-4b0f-9ea2-5603d365d7ed",
+        "Display": 0,
+        "X": 75,
+        "Y": 163,
+        "Width": 1158,
+        "Height": 653,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "imemin.txt",
+              "DocumentMoniker": "C:\\Users\\itay\\Desktop\\computer project\\COAssignment1\\binom\\imemin.txt",
+              "RelativeDocumentMoniker": "binom\\imemin.txt",
+              "ToolTip": "C:\\Users\\itay\\Desktop\\computer project\\COAssignment1\\binom\\imemin.txt",
+              "RelativeToolTip": "binom\\imemin.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-01-16T17:01:49.795Z",
               "EditorCaption": ""
             }
           ]
