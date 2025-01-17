@@ -2,7 +2,9 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "(gdb) Launch",
+<<<<<<< HEAD
+=======
+      "name": "(gdb) Attach",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/a.exe",
@@ -22,14 +24,20 @@
       ]
     },
     {
+>>>>>>> d6f1686428c72b6ca4698a6a38172206fb16e3d4
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/itay/Desktop/computer project/COAssignment1/asm/asm/x64/Debug",
-      "program": "c:/Users/itay/Desktop/computer project/COAssignment1/asm/asm/x64/Debug/build/Debug/outDebug",
+<<<<<<< HEAD
+      "cwd": "c:/Users/itay/Desktop/computer project/COAssignment1",
+      "program": "c:/Users/itay/Desktop/computer project/COAssignment1/build/Debug/outDebug",
+=======
+      "cwd": ".",
+      "program": "build/Debug/outDebug",
+>>>>>>> d6f1686428c72b6ca4698a6a38172206fb16e3d4
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

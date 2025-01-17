@@ -1,4 +1,4 @@
-    add $s1, $zero, $zero, $zero, 0, 0                      # set row index to 0
+ add $s1, $zero, $zero, $zero, 0, 0                      # set row index to 0
     lw $s0, $zero, $imm1, $zero, 0x100, 0                   # load circle radius from memory
     beq $zero, $s0, $zero, $imm2, 0, terminate              # exit if the radius is zero
     mac $s0, $s0, $s0, $zero, 0, 0                          # compute the square of the radius 
@@ -11,7 +11,7 @@ ColumnScan: blt $zero, $s2, $imm1, $imm2, 256, PixelCalc  # loop through each sc
     add $s1, $s1, $imm1, $zero, 1, 0                        # increment row index
     beq $zero, $zero, $zero, $imm2, 0, row_scan             # return to row scanning
 
-PixelCalc:   # check if the current pixel is inside the circle
+pixelcalc:                                                  # check if the current pixel is inside the circle
     add $a0, $zero, $zero, $zero, 0, 0                      # prepare for coordinate transformation
     sub $t0, $s1, $imm1, $zero, 127, 0                      # convert row to x coordinate
     mac $t0, $t0, $t0, $zero, 0, 0                          # calculate x^2
@@ -21,16 +21,16 @@ PixelCalc:   # check if the current pixel is inside the circle
     add $s2, $s2, $zero, $imm1, 1, 0                        # increment column index
     beq $zero, $zero, $zero, $imm2, 0, ColumnScan          # move to the next pixel in the row
 
-Terminate: halt $zero, $zero, $zero, $zero, 0, 0            # end the program
+terminate: halt $zero, $zero, $zero, $zero, 0, 0            # end the program
 
 DrawPixel: ble $zero, $a0, $s0, $imm2, 0, InCircle        # if pixel is inside the circle (within radius squared)
 
 OutCircle: add $a2, $imm1, $zero, $zero, 0, 0              # set pixel to black (outside circle)
    beq $zero, $zero, $zero, $imm2, 0, Draw                 # continue to draw the pixel
 
-InCircle: add $a2, $imm1, $zero, $zero, 255, 0             # set pixel to white (inside circle)
+incircle: add $a2, $imm1, $zero, $zero, 255, 0             # set pixel to white (inside circle)
 
-Draw: mac $t0, $s1, $imm1, $s2, 256, 0                      # calculate pixel index
+draw: mac $t0, $s1, $imm1, $s2, 256, 0                      # calculate pixel index
     out $zero, $imm1, $zero, $t0, 20, 0                     # set the monitor address for the pixel
     out $zero, $imm1, $zero, $a2, 21, 0                     # set the pixel color (black or white)
     out $zero, $imm1, $zero, $imm2, 22, 1                   # write the pixel to the screen
